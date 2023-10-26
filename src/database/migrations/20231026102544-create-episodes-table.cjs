@@ -26,9 +26,6 @@ module.exports = {
       video_url: {
         type: Sequelize.DataTypes.STRING
       },
-      thumbnail_url: {
-        type: Sequelize.DataTypes.STRING
-      },
       seconds_long: {
         type: Sequelize.DataTypes.INTEGER
       },

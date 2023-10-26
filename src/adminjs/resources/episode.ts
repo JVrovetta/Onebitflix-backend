@@ -9,10 +9,10 @@ const __dirname = path.dirname(__filename);
 
 const episodeResourceOptions: ResourceOptions = {
   navigation: 'Catálogo',
-  editProperties: ['name', 'synopsis', 'courseId', 'order', 'uploadVideo', 'uploadThumbnail', 'secondsLong'],
+  editProperties: ['name', 'synopsis', 'courseId', 'order', 'uploadVideo', 'secondsLong'],
   filterProperties: ['name', 'synopsis', 'courseId', 'secondsLong', 'createdAt', 'updatedAt'],
   listProperties: ['id', 'name', 'courseId', 'order', 'secondsLong'],
-  showProperties: ['id', 'name', 'synopsis', 'courseId', 'order', 'videoUrl', 'thumbnailUrl', 'secondsLong', 'createdAt', 'updatedAt']
+  showProperties: ['id', 'name', 'synopsis', 'courseId', 'order', 'videoUrl', 'secondsLong', 'createdAt', 'updatedAt']
 }
 
 const episodeResourceFeatures: FeatureType[] = [
@@ -20,7 +20,7 @@ const episodeResourceFeatures: FeatureType[] = [
     provider: {
       local: {
         bucket: path.join(__dirname, '..', '..', '..', 'uploads'),
-        opts: { baseUrl: '../uploads' }
+        opts: {}
       }
     },
     properties: {

@@ -7,12 +7,11 @@ interface EpisodeAttributes {
   synopsis: string
   order: number
   videoUrl: string
-  thumbnailUrl: string
   secondsLong: number
   courseId: number
 }
 
-interface EpisodeCreationAttributes extends Optional<EpisodeAttributes, 'id' | 'videoUrl' | 'thumbnailUrl' | 'secondsLong'> { }
+interface EpisodeCreationAttributes extends Optional<EpisodeAttributes, 'id' | 'videoUrl' | 'secondsLong'> { }
 
 interface EpisodeInstance extends Model<EpisodeAttributes, EpisodeCreationAttributes>, EpisodeAttributes { }
 
@@ -36,9 +35,6 @@ const Episode = sequelize.define<EpisodeInstance, EpisodeAttributes>('Episode', 
     allowNull: false
   },
   videoUrl: {
-    type: DataTypes.STRING
-  },
-  thumbnailUrl: {
     type: DataTypes.STRING
   },
   secondsLong: {
