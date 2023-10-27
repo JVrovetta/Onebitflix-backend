@@ -1,12 +1,12 @@
-import AdminJS, { ComponentLoader } from 'adminjs'
+import AdminJS from 'adminjs'
 import AdminJSExpress from '@adminjs/express'
 import * as AdminJSSequelize from '@adminjs/sequelize'
 import { sequelize } from '../database/index.js'
 import { adminJsResources } from './resources/index.js'
 import { brandingOptions } from './branding.js'
-import { componentLoader } from './componentLoader.js'
+import { Components, componentLoader } from './components/componentLoader.js'
 import { locale } from './locale.js'
-import { User } from '../models/index.js'
+import { Category, Course, Episode, User } from '../models/index.js'
 import bcrypt from 'bcrypt'
 
 AdminJS.registerAdapter(AdminJSSequelize)
@@ -17,7 +17,25 @@ const adminJs = new AdminJS({
   resources: adminJsResources,
   branding: brandingOptions,
   locale: locale,
-  componentLoader: componentLoader
+  componentLoader: componentLoader,
+  dashboard: {
+    component: Components.Dashboard,
+    handler: async (req, res, context) => {
+      const [courses, episodes, categories, standardUsers] = await Promise.all([
+        Course.count(),
+        Episode.count(),
+        Category.count(),
+        User.count({ where: { role: 'user' } })
+      ])
+
+      res.json({
+        'Cursos': courses,
+        'Episodios': episodes,
+        'Categorias': categories,
+        'Usuarios': standardUsers
+      })
+    }
+  }
 })
 
 const adminJsRouter = AdminJSExpress.buildAuthenticatedRouter(adminJs, {

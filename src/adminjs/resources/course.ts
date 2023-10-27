@@ -1,6 +1,6 @@
 import uploadFileFeature from "@adminjs/upload";
 import { FeatureType, ResourceOptions } from "adminjs";
-import { componentLoader } from "../componentLoader.js";
+import { componentLoader } from "../components/componentLoader.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
