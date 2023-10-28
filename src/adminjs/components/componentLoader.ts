@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 const componentLoader = new ComponentLoader()
 
 const Components = {
-  Dashboard: componentLoader.add('Dashboard', path.resolve(__dirname, 'Dashboard'))
+  Dashboard: componentLoader.add('Dashboard', path.resolve(__dirname, 'Dashboard/index'))
 }
 
 export { componentLoader, Components }
