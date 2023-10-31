@@ -17,10 +17,24 @@ const ensureAuth = (req: AuthenticatedRequest, res: Response, next: NextFunction
 
   jwtServices.verifyToken(token, async (err, decoded) => {
     if (err || typeof decoded === 'undefined') return res.status(401).json({ message: 'Access denied | Invalid token...' })
+
     req.user = await userServices.findByEmail((decoded as JwtPayload).email)
     next()
   })
 
 }
 
-export { ensureAuth }
+const ensureAuthQuery = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+  const { token } = req.query
+  if (!token) return res.status(401).json({ message: 'Access denied | Token not found...' })
+  if (typeof token !== 'string') return res.status(400).json({ message: 'Token param must be of type string...' })
+
+  jwtServices.verifyToken(token, async (err, decoded) => {
+    if (err || typeof decoded === 'undefined') return res.status(401).json({ message: 'Access denied | Invalid token...' })
+
+    req.user = await userServices.findByEmail((decoded as JwtPayload).email)
+    next()
+  })
+}
+
+export { ensureAuth, ensureAuthQuery }
