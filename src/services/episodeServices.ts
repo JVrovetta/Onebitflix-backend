@@ -12,9 +12,9 @@ const episodeService = {
     const fileStat = fs.statSync(filePath)
 
     if (range) {
-      const parts = range.replace(/bytes=/, '').split('-')
-      const start = parseInt(parts[0], 10) //1024
-      const end = parts[1] ? parseInt(parts[1], 10) : fileStat.size - 1 //8196
+      const parts = range.replace(/bytes=/, '').split('-') // Formato exemplo ( "bytes=0-1024" )
+      const start = parseInt(parts[0], 10) // 0
+      const end = parts[1] ? parseInt(parts[1], 10) : fileStat.size - 1 // 1024
       const chunkSize = (end - start) + 1
 
       const head = {
