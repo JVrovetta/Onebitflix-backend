@@ -80,4 +80,4 @@ User.prototype.checkPassword = function (password: string, callbackfn: CheckPass
   })
 }
 
-export { User, UserCreationAttributes }
+export { User, UserCreationAttributes, UserInstance }
