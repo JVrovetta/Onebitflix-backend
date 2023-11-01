@@ -2,7 +2,7 @@ import { Response } from "express"
 import { favoriteServices } from "../services/favoriteServices.js"
 import { AuthenticatedRequest } from "../middlewares/auth.js"
 
-const favoriteController = {
+const favoritesController = {
   //POST /favorites
   save: async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user!.id
@@ -39,4 +39,4 @@ const favoriteController = {
   }
 }
 
-export { favoriteController }
+export { favoritesController }
