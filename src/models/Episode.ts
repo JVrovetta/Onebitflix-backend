@@ -49,4 +49,4 @@ const Episode = sequelize.define<EpisodeInstance, EpisodeAttributes>('Episode', 
   }
 })
 
-export { Episode }
+export { Episode, EpisodeCreationAttributes, EpisodeInstance }

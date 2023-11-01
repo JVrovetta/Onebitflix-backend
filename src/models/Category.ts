@@ -28,4 +28,4 @@ const Category = sequelize.define<CategoryInstance, CategoryAttributes>('Categor
   }
 })
 
-export { Category }
+export { Category, CategoryCreationAttributes, CategoryInstance }

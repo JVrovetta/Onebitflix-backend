@@ -45,4 +45,4 @@ const Course = sequelize.define<CourseInstance, CourseAttributes>('Course', {
   }
 })
 
-export { Course }
+export { Course, CourseCreationAttributes, CourseInstance }

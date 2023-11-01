@@ -37,4 +37,4 @@ const ensureAuthQuery = (req: AuthenticatedRequest, res: Response, next: NextFun
   })
 }
 
-export { ensureAuth, ensureAuthQuery }
+export { ensureAuth, ensureAuthQuery, AuthenticatedRequest }
