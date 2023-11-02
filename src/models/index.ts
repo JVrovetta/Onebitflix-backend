@@ -12,7 +12,7 @@ Course.belongsTo(Category)
 
 // Episode -> Course
 Course.hasMany(Episode, { as: 'episodes' })
-Episode.belongsTo(Course)
+Episode.belongsTo(Course, { as: 'course' })
 
 // User <- Favorite -> Course
 Course.belongsToMany(User, { through: Favorite })
@@ -28,6 +28,6 @@ User.belongsToMany(Course, { through: Like })
 
 // User <- WatchTime -> Episode
 Episode.belongsToMany(User, { through: WatchTime })
-User.belongsToMany(Episode, { through: WatchTime })
+User.belongsToMany(Episode, { through: WatchTime, as: 'episodes' })
 
 export { Category, Course, Episode, User, Favorite, Like, WatchTime }
