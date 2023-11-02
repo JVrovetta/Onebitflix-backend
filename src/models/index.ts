@@ -4,6 +4,7 @@ import { Episode } from "./Episode.js";
 import { User } from "./User.js";
 import { Favorite } from "./Favorite.js";
 import { Like } from "./Like.js";
+import { WatchTime } from "./WatchTime.js";
 
 // Course -> Category
 Category.hasMany(Course, { as: 'courses' })
@@ -23,10 +24,10 @@ Favorite.belongsTo(User)
 
 // User <- Like -> Course
 Course.belongsToMany(User, { through: Like })
-Course.hasMany(Like)
-Like.belongsTo(Course)
 User.belongsToMany(Course, { through: Like })
-User.hasMany(Like)
-Like.belongsTo(User)
 
-export { Category, Course, Episode, User, Favorite, Like }
+// User <- WatchTime -> Episode
+Episode.belongsToMany(User, { through: WatchTime })
+User.belongsToMany(Episode, { through: WatchTime })
+
+export { Category, Course, Episode, User, Favorite, Like, WatchTime }

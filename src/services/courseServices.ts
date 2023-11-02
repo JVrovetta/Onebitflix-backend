@@ -1,6 +1,5 @@
 import { Op } from "sequelize"
-import { Course, User } from "../models/index.js"
-import { sequelize } from "../database/index.js"
+import { Course } from "../models/index.js"
 
 const courseService = {
   findByIdWithEpisodes: async (id: string) => {
@@ -51,6 +50,7 @@ const courseService = {
       const [topTen, metadata] = popularCourses
       return topTen
     }
+
     return null
   },
 
@@ -76,5 +76,3 @@ const courseService = {
 }
 
 export { courseService }
-
-
