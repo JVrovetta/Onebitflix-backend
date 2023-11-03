@@ -1,9 +1,12 @@
 import express from 'express'
+import cors from 'cors'
 import { sequelize } from './database/index.js'
 import { adminJs, adminJsRouter } from './adminjs/index.js'
 import { router } from './routes.js'
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.static('public'))
 app.use(express.json())
