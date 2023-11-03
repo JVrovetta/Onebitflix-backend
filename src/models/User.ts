@@ -77,7 +77,7 @@ const User = sequelize.define<UserInstance, UserAttributes>('User', {
 })
 
 User.prototype.checkPassword = function (password: string, callbackfn: CheckPasswordCallback) {
-  bcrypt.compare(password, this.password, (err, isSame) => {
+  bcrypt.compare(password, this.password, function (err, isSame) {
     err ? callbackfn(err) : callbackfn(err, isSame)
   })
 }
