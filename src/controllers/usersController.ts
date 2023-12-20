@@ -5,9 +5,10 @@ import { userServices } from "../services/userServices.js";
 const usersController = {
   //GET /users/current
   show: async (req: AuthenticatedRequest, res: Response) => {
-    const { id, firstName, lastName, phone, birth, email, password, role } = req.user!
+    //@ts-ignore
+    const { id, firstName, lastName, phone, birth, email, password, role, createdAt } = req.user!
     try {
-      return res.status(200).json({ id, firstName, lastName, phone, birth, email, password, role })
+      return res.status(200).json({ id, firstName, lastName, phone, birth, email, password, role, createdAt })
     } catch (err) {
       if (err instanceof Error) return res.status(400).json({ error: err.message })
     }

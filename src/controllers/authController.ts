@@ -34,7 +34,7 @@ const authController = {
         const payload = { id: user.id, firstName: user.firstName, email: user.email }
         const token = jwtServices.signToken(payload, '5d')
 
-        return res.json({ authenticated: true, ...payload, token })
+        return res.status(200).json({ authenticated: true, ...payload, token })
       })
     } catch (err) {
       if (err instanceof Error) return res.status(400).json({ error: err.message })
